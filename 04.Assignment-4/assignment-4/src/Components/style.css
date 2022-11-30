@@ -1,0 +1,10 @@
+body {
+    background-color: #1e2126;
+}
+
+.container {
+    width: 100%;/*whatever size you want your container*/
+    display: flex; /*Make sure to call this on your container*/
+    align-items: stretch; /*stretches all cards same height*/
+    justify-content: space-around; /*some space between cards*/
+}
