@@ -1,0 +1,10 @@
+body {
+    background-color: #1e2126;
+}
+
+.container {
+    width: 100%;
+    display: flex; 
+    align-items: stretch; 
+    justify-content: space-around; 
+}
