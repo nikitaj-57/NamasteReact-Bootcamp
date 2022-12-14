@@ -1,0 +1,21 @@
+.nav-container {
+    color: white;
+    /* text-align: center; */
+    background-color: #343a40;
+    padding: 0.5rem 0rem 0.5rem 3rem;
+    display: flex;
+}
+
+.nav-right {
+    display: flex;
+    padding: 0.4rem 3rem 0rem 0rem;
+}
+
+#home {
+    color: white;
+}
+
+#about {
+    color: white;
+    margin: 0 0 0 2rem
+}

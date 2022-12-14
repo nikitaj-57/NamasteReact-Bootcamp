@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import './styles.css';
 import { CardComponent, TitleComponent, SearchBar } from './Components';
 
@@ -8,8 +9,7 @@ const CardContainer = ({ userData }) => {
       <div className='row'>
         {
           userData.map((singleUser) => {
-            // console.log(singleUser);
-            return <CardComponent singleUser={singleUser} key={singleUser.id}/>
+            return <CardComponent singleUser={singleUser} key={singleUser.login}/>
           })
         }
       </div>
@@ -24,7 +24,7 @@ const usernames = [
   "Pujarini", 
   "aditifarkya",
   "gavandivya",
-  "soumyagangamwar",
+  "nitishnivedan",
   "Bhallora"
 ]
 
@@ -35,14 +35,12 @@ const BodyComponent = () => {
   const fetchUserDetails = async() => {
     let response = await Promise.all(
       usernames.map(async(name) => {
-        const userInfo = await fetch(`https://api.github.com/users/${name}`);
+        const userInfo = await fetch(`https://api.github.com/users/${name}`)
         const data = await userInfo.json();
         return data;
-        // console.log(data);
       })
     )
     setUserData(response);
-    // console.log(response);
   }
 
   useEffect(() => {
@@ -51,12 +49,7 @@ const BodyComponent = () => {
   
   return (
     <div>
-      <nav class="navbar navbar-dark bg-dark py-0" >
-        <div class="container-fluid">
-            <TitleComponent/>
-            <SearchBar userData={userData} setUserData={setUserData}/>
-        </div>
-      </nav>
+      <SearchBar userData={userData} setUserData={setUserData}/>
       <CardContainer userData={userData}/>
     </div>
   )
@@ -64,7 +57,11 @@ const BodyComponent = () => {
 
 const AppLayout = () => {
   return (
-    <BodyComponent />
+    <>
+      <TitleComponent/>
+      <Outlet />
+    </>
+    
   )
 }
 
@@ -74,4 +71,4 @@ function App() {
   );
 }
 
-export default App;
+export  {App, BodyComponent};

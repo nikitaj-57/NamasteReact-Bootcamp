@@ -1,0 +1,22 @@
+.about-container {
+    /* border: 2px solid white; */
+    color: antiquewhite;
+    text-align: center;
+    /* padding: 10rem 0; */
+}
+
+.about-heading {
+    /* border: 2px solid white; */
+    margin: 7rem 0 3rem 0;
+    font-size: -webkit-xxx-large;
+    color: lavender;
+}
+
+.about-description {
+    /* border: 2px solid white; */
+    width: 45rem;
+    margin-left: 24rem;
+    text-align: justify;
+    height: auto;
+    color: gray;
+}
