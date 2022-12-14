@@ -31,7 +31,7 @@ const usernames = [
 const BodyComponent = () => {
   // UserData will store the data fetched using Github API
   const [ userData, setUserData ] = useState([]);
-  const [ filteredData, setFilteredData ] = useState([]);
+  const [ data ] = useState([]);
 
   const fetchUserDetails = async() => {
     let response = await Promise.all(
@@ -42,7 +42,6 @@ const BodyComponent = () => {
       })
     )
     setUserData(response);
-    
   }
 
   useEffect(() => {
@@ -51,8 +50,8 @@ const BodyComponent = () => {
   
   return (
     <div>
-      <SearchBar userData={userData} setFilteredData={setFilteredData}/>
-      <CardContainer userData={filteredData.length ? filteredData : userData}/>
+      <SearchBar userData={userData} setUserData={setUserData}/>
+      <CardContainer userData={userData}/>
     </div>
   )
 }

@@ -2,13 +2,13 @@ import { useState } from "react";
 import './style.css';
 
 
-const SearchBar = ({ userData, setUserData }) => {
+const SearchBar = ({ userData, setFilteredData }) => {
 
     function searchUser(searchText) {
-        const filteredData = userData.filter((user) => {
+        const filteredSearchedData = userData.filter((user) => {
             return user.name.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())
         })
-        return filteredData;
+        return filteredSearchedData;
     }
 
     const [ searchText, setSearchText ] = useState("");
@@ -19,7 +19,7 @@ const SearchBar = ({ userData, setUserData }) => {
             e.preventDefault();
             const filteredData = searchUser(searchText);
             // setFilteredData(filteredData);
-            setUserData(filteredData);
+            setFilteredData(filteredData);
             console.log(filteredData); 
         }}>
           <input
