@@ -1,9 +1,7 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import './styles.css';
 import { CardComponent, TitleComponent, SearchBar } from './Components';
-import usernames from './utils/usernames';
-import ThemeContext from './Context/ThemeContext';
 
 const CardContainer = ({ userData }) => {
   return (
@@ -19,23 +17,21 @@ const CardContainer = ({ userData }) => {
   )
 }
 
-// const usernames = [
-//   "akshaymarch7", 
-//   "ap221882", 
-//   "nikitaj-57", 
-//   "Pujarini", 
-//   "aditifarkya",
-//   "gavandivya",
-//   "nitishnivedan",
-//   "Bhallora"
-// ]
+const usernames = [
+  "akshaymarch7", 
+  "ap221882", 
+  "nikitaj-57", 
+  "Pujarini", 
+  "aditifarkya",
+  "gavandivya",
+  "nitishnivedan",
+  "Bhallora"
+]
 
 const BodyComponent = () => {
   // UserData will store the data fetched using Github API
   const [ userData, setUserData ] = useState([]);
-  const [ filteredData, setFilteredData ] = useState([]);
-
-  const { theme, setTheme } = useContext(ThemeContext);
+  const [ data ] = useState([]);
 
   const fetchUserDetails = async() => {
     let response = await Promise.all(
@@ -46,7 +42,6 @@ const BodyComponent = () => {
       })
     )
     setUserData(response);
-    
   }
 
   useEffect(() => {
@@ -54,20 +49,19 @@ const BodyComponent = () => {
   },[])
   
   return (
-    <div style={{ "backgroundColor" : theme === "light" ? "#778899" : "#1e2126"}}>
-      <SearchBar userData={userData} setFilteredData={setFilteredData}/>
-      <CardContainer userData={filteredData.length ? filteredData : userData}/>
+    <div>
+      <SearchBar userData={userData} setUserData={setUserData}/>
+      <CardContainer userData={userData}/>
     </div>
   )
 }
 
 const AppLayout = () => {
-  const [ theme, setTheme ] = useState("light");
   return (
-    <ThemeContext.Provider value={{ theme: theme, setTheme: setTheme }}>
+    <>
       <TitleComponent/>
       <Outlet />
-    </ThemeContext.Provider>
+    </>
     
   )
 }
