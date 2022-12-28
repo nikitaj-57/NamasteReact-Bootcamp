@@ -1,29 +1,28 @@
-import './style.css';
-import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import ThemeContext from '../../Context/ThemeContext';
+import "./style.css";
+import { Link } from "react-router-dom";
 
 const title = "Brainy Fools";
 
-
-
 const TitleComponent = () => {
-    const { theme, setTheme } = useContext(ThemeContext);
-    return (
-    <nav className='nav-container'> 
-        <h1>{title}</h1>
-        <div className='ml-auto nav-right'>
-            <Link to={"/"} >
-                <h3 id='home'>Home</h3>
-            </Link>
-
-            <Link to={"/about-us"} >
-                <h3 id='about'>About</h3>
-            </Link>
-        </div> 
-        <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>{theme}</button>
-    </nav>   
-    )  
-}
+  return (
+    <nav className="nav-container">
+      <div className="name">
+        <p>{title}</p>
+      </div>
+      <ul>
+        <Link to="/">
+          <li className="list-items">HOME</li>
+        </Link>
+        <Link to="/about-us">
+          <li className="list-items">ABOUT</li>
+        </Link>
+        <Link to="/login">
+          <li className="list-items">Login - username</li>
+        </Link>
+        <li className="list-items">Dark Mode</li>
+      </ul>
+    </nav>
+  );
+};
 
 export default TitleComponent;
