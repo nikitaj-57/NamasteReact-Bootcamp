@@ -1,20 +1,5 @@
 import React, { useState } from "react";
 
-/*
-const ProfileComponent = () => {
-    const [ name, setName ] = useState("Nikita");
-    const [ location, setLocation ] = useState("India");
-
-    return (
-        <div className="profile-container">
-            <h1>User Profile Page</h1>
-            <h3>Name : {name}</h3>
-            <h3>location : {location}</h3>
-        </div>
-    )
-}
-*/
-
 class ProfileComponent extends React.Component {
     constructor(props) {
         super(props);
@@ -38,9 +23,7 @@ class ProfileComponent extends React.Component {
         
         this.setState({
             userInfo : json,
-        })
-
-        
+        })  
     }
 
     render() {
